@@ -3,6 +3,8 @@ package first.first.coldStorage;
 import first.first.member.Member;
 import first.first.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,5 +34,11 @@ public class ColdStorageController {
     public ColdStorage delecole(@RequestParam Long coldstorage_id) {
         ColdStorage dele = coldStorageService.delecolde(coldstorage_id);
         return dele;
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<ColdStorage>> Expiration(ColdStorage coldStorage){
+         List<ColdStorage> get = coldStorageService.Expiration(coldStorage);
+        return ResponseEntity.ok(get);
     }
 }

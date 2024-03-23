@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,13 +22,11 @@ public class ColdStorage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long coldstroage_id;
-
     @Column
     private int quantity;
-    @CreatedDate
-    private LocalDateTime reg_date;
-    @LastModifiedDate
-    private LocalDateTime exp_date;
+
+    private LocalDate regdate;
+
     @Enumerated(EnumType.STRING)
     private Foodtype foodtype;
 

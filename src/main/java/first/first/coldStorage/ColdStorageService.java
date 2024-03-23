@@ -5,6 +5,7 @@ import first.first.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +35,14 @@ public class ColdStorageService {
         Optional<ColdStorage> delete = coldStorageRepository.findById(coldstorageId);
         coldStorageRepository.delete(delete.get());
         return delete.get();
+    }
+
+    public List<ColdStorage> Expiration(ColdStorage coldStorage) {
+        LocalDate today =LocalDate.now();
+        LocalDate threedays = today.plusDays(3);
+
+        return coldStorageRepository.findByregdateBefore(threedays);
+
+
     }
 }
