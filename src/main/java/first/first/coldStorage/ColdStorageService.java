@@ -15,6 +15,7 @@ public class ColdStorageService {
 
     private final MemberRepository memberRepository;
     private final ColdStorageRepository coldStorageRepository;
+
     public ColdStorage Upcoldsto(int quantity, Long coldstorageId, ColdStorage coldStorage) {
         Optional<ColdStorage> upcol = coldStorageRepository.findById(coldstorageId);
         if (upcol.isPresent()) {
@@ -38,11 +39,19 @@ public class ColdStorageService {
     }
 
     public List<ColdStorage> Expiration(ColdStorage coldStorage) {
-        LocalDate today =LocalDate.now();
+        LocalDate today = LocalDate.now();
         LocalDate threedays = today.plusDays(3);
 
         return coldStorageRepository.findByregdateBefore(threedays);
+    }
 
+
+    public ColdStorage regist( ColdStorage coldStorage) {
+        Optional<Member> get = memberRepository.findById(coldStorage.getMember().getMember_id());
+        if (get.isPresent()) {
+            Member member = get.get();
+        }
+        return coldStorageRepository.save(coldStorage);
 
     }
 }

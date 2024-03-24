@@ -16,7 +16,8 @@ import java.util.Optional;
 public class ColdStorageController {
 
     private final MemberRepository memberRepository;
-    private final  ColdStorageService coldStorageService;
+    private final ColdStorageService coldStorageService;
+
     @GetMapping("/cold/")
     public List<ColdStorage> getColdStorage(@RequestParam Long memberid) {
         Optional<Member> member = memberRepository.findById(memberid);
@@ -37,8 +38,14 @@ public class ColdStorageController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ColdStorage>> Expiration(ColdStorage coldStorage){
-         List<ColdStorage> get = coldStorageService.Expiration(coldStorage);
+    public ResponseEntity<List<ColdStorage>> Expiration(ColdStorage coldStorage) {
+        List<ColdStorage> get = coldStorageService.Expiration(coldStorage);
         return ResponseEntity.ok(get);
+    }
+
+    @PostMapping("/cold/add")
+    public ResponseEntity<ColdStorage> addcold( ColdStorage coldStorage) {
+        ColdStorage add = coldStorageService.regist(coldStorage);
+        return ResponseEntity.ok(add);
     }
 }
