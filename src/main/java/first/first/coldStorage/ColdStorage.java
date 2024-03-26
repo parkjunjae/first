@@ -28,9 +28,6 @@ public class ColdStorage {
     private LocalDate regdate;
 
     @Enumerated(EnumType.STRING)
-    private Foodtype foodtype;
-
-    @Enumerated(EnumType.STRING)
     private Storagetype storagetype;
 
     @ManyToOne

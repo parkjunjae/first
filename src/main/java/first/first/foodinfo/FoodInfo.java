@@ -16,7 +16,6 @@ public class FoodInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodinfo_id;
 
-    @Column(length = 50)
     private String tip;
 
     @Column(length = 50)
