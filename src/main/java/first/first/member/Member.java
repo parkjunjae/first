@@ -1,5 +1,6 @@
 package first.first.member;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -17,17 +18,25 @@ public class Member {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long member_id;
+
         @Column(unique = true, nullable = false)
         @Size(min = 5, max = 50)
         private String email;
+
         @Column(nullable = false)
         private String nickname;
+
         @Column(nullable = false)
         private String username;
+
         @Column(nullable = false)
         private String password;
+
         @Column(nullable = false)
         private String birth;
+
+        @Column(nullable = false)
+        private String phoneNumber;
 
         @CreatedDate
         private LocalDateTime cdate;

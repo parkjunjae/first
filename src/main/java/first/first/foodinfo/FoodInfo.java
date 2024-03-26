@@ -18,6 +18,7 @@ public class FoodInfo {
 
     @Column(length = 50)
     private String tip;
+
     @Column(length = 50)
     private String foodname;
 }

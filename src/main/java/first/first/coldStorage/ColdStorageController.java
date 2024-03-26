@@ -3,7 +3,6 @@ package first.first.coldStorage;
 import first.first.member.Member;
 import first.first.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,4 +47,13 @@ public class ColdStorageController {
         ColdStorage add = coldStorageService.regist(coldStorage);
         return ResponseEntity.ok(add);
     }
+    @GetMapping("/foodstorage/cold")
+    public List<ColdStorage> getColdStorage() {
+        return coldStorageService.getcold();
+    }
+    @GetMapping("/foodstorage/forzen")
+    public List<ColdStorage> getForzenStorage() {
+        return coldStorageService.getfrozen();
+    }
+
 }

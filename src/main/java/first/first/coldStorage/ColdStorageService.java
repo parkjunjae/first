@@ -4,6 +4,7 @@ import first.first.member.Member;
 import first.first.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,7 +41,7 @@ public class ColdStorageService {
 
     public List<ColdStorage> Expiration(ColdStorage coldStorage) {
         LocalDate today = LocalDate.now();
-        LocalDate threedays = today.plusDays(3);
+        LocalDate threedays = today.plusDays(5);
 
         return coldStorageRepository.findByregdateBefore(threedays);
     }
@@ -53,5 +54,13 @@ public class ColdStorageService {
         }
         return coldStorageRepository.save(coldStorage);
 
+    }
+
+    public List<ColdStorage> getcold() {
+        return coldStorageRepository.findByStoragetype(Storagetype.냉장);
+    }
+
+    public List<ColdStorage> getfrozen() {
+        return coldStorageRepository.findByStoragetype(Storagetype.냉동);
     }
 }

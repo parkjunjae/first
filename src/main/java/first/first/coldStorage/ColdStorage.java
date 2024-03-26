@@ -30,6 +30,9 @@ public class ColdStorage {
     @Enumerated(EnumType.STRING)
     private Foodtype foodtype;
 
+    @Enumerated(EnumType.STRING)
+    private Storagetype storagetype;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
